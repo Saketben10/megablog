@@ -12,10 +12,10 @@ const Signup = () => {
   const dispatch = useDispatch();
   const { register, handleSubmit } = useForm();
 
-  const signup = async (data) => {
-    console.log(data)
+  const signup = async ( data) => {
+ 
    
-    setError("");
+    setError(null);
 
     try {
       const createdUser = await authservice.createAccount(data);
@@ -35,19 +35,19 @@ const Signup = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
+    <div className="flex flex-col items-center justify-center min-h-75% bg-gray-100">
       <div className="w-full max-w-lg p-8 bg-white rounded-lg shadow-md">
         <span className="block mx-auto mb-6 max-w-[100px]">
-          <Logo width="100%" />
+          <Logo width="100%" height="75%" />
         </span>
         <h2 className="text-2xl font-bold text-center">
           Sign up to create an account
         </h2>
         <p className="mt-2 text-center text-sm text-gray-600">
-          Already have an account?{" "}
+          Already have an account? 
           <Link
             to="/login"
-            className="font-medium text-primary hover:underline"
+            className="font-medium text-primary hover:underline text-blue-500"
           >
             Log In
           </Link>
@@ -74,13 +74,13 @@ const Signup = () => {
             />
             <Input
               type="password"
-              label="Password:"
+              label="password"
               placeholder="Create your password"
               {...register("password", { required: true })}
             />
-            <Button type="submit" className="w-full" text = 'create Account'>
-              Create Account
-            </Button>
+            <Button type="submit" className="w-full hover:bg-slate-500/80" text = 'Create Account' />
+ 
+     
           </div>
         </form>
       </div>

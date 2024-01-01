@@ -4,8 +4,7 @@ import { useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
 import Loader from "./Loader";
 
-export default function Protected(props) {
-  const { children, authentication = true } = props;
+export default function Protected ({ children, authentication = true })  {
   const [loading, setloading] = useState(true);
   const navigate = useNavigate();
   const authStatus = useSelector((state) => state.auth.status);
@@ -13,7 +12,7 @@ export default function Protected(props) {
   useEffect(() => {
     if (authentication && authStatus !== authentication) {
       // Check for the 'account' scope
-      if (authStatus === 'guests' && !userHasAccountScope()) {
+      if (authStatus === "guests" && !userHasAccountScope()) {
         navigate("/insufficient-permissions");
         return;
       }
@@ -28,7 +27,9 @@ export default function Protected(props) {
     <div className="flex justify-center p-4 m-4">
       <Loader />
     </div>
-  ) : children;
+  ) : (
+    <div>{children}</div>
+  );
 }
 
 // Add a helper function to check for the 'account' scope

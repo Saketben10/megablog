@@ -2,9 +2,9 @@ import   { forwardRef } from "react";
 import PropTypes from "prop-types";
 import { useId } from "@reach/auto-id";
 
-const Input = forwardRef(function Input(prop, ref) {
+const Input = forwardRef(function Input({ label, className = '', type = '', ...props }, ref) {
   const id = useId();
-const { label, className = '', type = '', ...props } = prop
+ 
   return (
     <div className={`w-full`}>
       {label && (

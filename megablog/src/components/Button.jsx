@@ -15,7 +15,9 @@ const Button = ({
       type={type}
       {...props}
     >
+      <p className='font-semibold text-white' >
       {text}
+      </p>
     </button>
   );
 };

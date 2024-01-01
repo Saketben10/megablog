@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 
 import authservice from "./appwrite/auth";
 import { login, logout } from "./store/AuthSlice";
-import { Header, Footer } from "./components";
+import { Header, Footer, Loader } from "./components";
 import { Outlet } from "react-router-dom";
 
 const App = () => {
@@ -22,20 +22,20 @@ const App = () => {
       })
       .finally(() => setloading(false));
   }, []); // <-- Add an empty dependency array here
-  
 
   return !loading ? (
-    <div className="min-h-screen flex flex-wrap justify-center bg-gray-600">
+    <div className="min-h-screen flex flex-wrap justify-center bg-gray-300" >
       <div className="w-full block">
         <Header />
         <main>
-           
           <Outlet />
         </main>
         <Footer />
       </div>
     </div>
-  ) : null;
+  ) : (
+    <Loader />
+  );
 };
 
 export default App;

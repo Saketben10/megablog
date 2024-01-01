@@ -8,7 +8,7 @@ export class Service {
 
   constructor() {
     this.client
-      .setEndpoint(config.appwriteulr)
+      .setEndpoint(config.appwriteurl)
       .setProject(config.appwriteprojectid);
     this.databases = new Databases(this.client);
     this.storage = new Storage(this.client);
@@ -41,7 +41,7 @@ export class Service {
       const update = await this.databases.updateDocument(
         config.appwritedatabseid,
         config.appwritecollectionid,
-        slug, // this is unique id you can use id.unique() also,
+        slug,  
         {
           title,
           content,

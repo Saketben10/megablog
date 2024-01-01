@@ -63,13 +63,13 @@ const file = data.featuredImage && data.featuredImage[0]
       .toLowerCase()
       .replace(/^[a-zA-Z\d\s]+/g , '-')
       .replace(/\s/g, '-')
-    return ''
+    return ;
   }, []);
 
 
 useEffect(() => {
-    const subscription = watch((value)=>{
-if (name === 'title '){
+    const subscription = watch((value,{name})=>{
+if (name === 'title'){
   setValue('slug' , slugTransform(value.title , {shouldValidate : true}))
 }  
     })
@@ -88,15 +88,16 @@ if (name === 'title '){
           className="mb-4"
           {...register("title", { required: true })}
       />
-      <Input
-          label="Slug :"
-          placeholder="Slug"
-          className="mb-4"
-          {...register("slug", { required: true })}
-          onInput={(e) => {
-              setValue("slug", slugTransform(e.currentTarget.value), { shouldValidate: true });
-          }}
-      />
+     <Input
+  label="slug "
+  placeholder="slug"
+  className="mb-4"
+  {...register("slug", { required: true })}
+  onInput={(e) => {
+    setValue('slug', slugTransform(e.target.value), { shouldValidate: true });
+  }}
+/>
+
       <RTE label="Content :" name="content" control={control} defaultValue={getValues("content")} />
   </div>
   <div className="w-1/3 px-2">
@@ -122,7 +123,7 @@ if (name === 'title '){
           className="mb-4"
           {...register("status", { required: true })}
       />
-      <Button type="submit" bgcolor={post ? "bg-green-500" : undefined} className="w-full bg-red-600 font-bold"text="Submit" >
+      <Button type="submit" bgcolor={post ? "bg-green-500" : undefined} className="w-full bg-red-600 font-bold"text="Submit" onSubmit={handleSubmit(submit)}>
           {post ? "Update" : "Submit"}
       </Button>
   </div>
@@ -137,7 +138,7 @@ Postform.propTypes = {
     featuredImage: PropTypes.string ,
     content: PropTypes.string ,
     status: PropTypes.oneOf(["active", "inactive"]) , // Add prop validation for status
-    // Add other properties as needed
+  
   }) ,
 };
 

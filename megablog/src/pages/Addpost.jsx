@@ -7,7 +7,7 @@ const Addpost = () => {
   return (
     <div className="py-8">
       <Container>
-        <Postform />
+        <Postform  />
       </Container>
     </div>
   );

@@ -6,8 +6,8 @@ import { useState } from "react";
 import authservice from "../appwrite/auth";
 import { useForm } from "react-hook-form";
 
-const Login = (data) => {
-  console.log(data)
+const Login = ( ) => {
+ 
   const [error, seterror] = useState("");
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -15,7 +15,7 @@ const Login = (data) => {
   const { register, handleSubmit } = useForm();
 
   const login = async (data) => {
-    Login 
+  
     seterror("");
 
     try {
@@ -79,10 +79,10 @@ const Login = (data) => {
                 required: true,
               })}
             />
-            <Button type="submit" className="w-full bg-blend-saturation"  text = 'Login' >
+            <Button type="submit" className="w-full bg-blend-saturation hover:bg-cyan-400/70"  text = 'Login'  />
             
-              Sign in
-            </Button>
+              
+            
           </div>
         </form>
       </div>

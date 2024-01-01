@@ -40,7 +40,7 @@ const Header = () => {
         <nav className="flex items-center">
           <div className="mr-4">
             <Link to="/">
-              <Logo width="70px" />
+              <Logo width="50px" height="50px" />
             </Link>
           </div>
           <ul className="flex items-center space-x-4">
